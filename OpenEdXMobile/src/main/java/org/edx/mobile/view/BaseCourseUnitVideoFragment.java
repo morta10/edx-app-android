@@ -122,7 +122,9 @@ public abstract class BaseCourseUnitVideoFragment extends CourseUnitFragment
                     int startMillis = subtitle.start.getMseconds();
                     int endMillis = subtitle.end.getMseconds();
                     if (currentPos >= startMillis && currentPos <= endMillis) {
-                        updateClosedCaptionData(subtitle);
+                        if(loginPrefs.getClosedCaptionsVisibility()) {
+                            updateClosedCaptionData(subtitle);
+                        }
                         updateSelection(currentSubtitleIndex);
                         break;
                     } else if (currentPos > endMillis) {

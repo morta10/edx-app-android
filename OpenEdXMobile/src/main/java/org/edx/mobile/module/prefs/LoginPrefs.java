@@ -95,6 +95,18 @@ public class LoginPrefs {
     }
 
     /**
+     * @return Closed caption's visibility
+     */
+    @Nullable
+    public Boolean getClosedCaptionsVisibility() {
+        return pref.getBoolean(PrefManager.Key.CLOSED_CAPTIONS_VISIBILITY, false);
+    }
+
+    public void setClosedCaptionsVisibility(@Nullable Boolean isVisible) {
+        pref.put(PrefManager.Key.CLOSED_CAPTIONS_VISIBILITY, isVisible);
+    }
+
+    /**
      * @return User selected video playback speed, returns normal speed
      * i-e- {@link VideoPlaybackSpeed#SPEED_1_0X} if user hasn't selected it yet.
      */

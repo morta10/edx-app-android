@@ -139,12 +139,14 @@ public class CourseUnitVideoPlayerFragment extends BaseCourseUnitVideoFragment {
         }
 
         if (isVisibleToUser) {
+            playerFragment.setCallback(this);
             if (playerFragment.getPlayingVideo() == null) {
                 checkVideoStatusAndPlay(unit);
             } else {
                 checkVideoStatus(unit);
             }
         } else {
+            playerFragment.setCallback(null);
             ((BaseFragmentActivity) getActivity()).hideInfoMessage();
         }
 

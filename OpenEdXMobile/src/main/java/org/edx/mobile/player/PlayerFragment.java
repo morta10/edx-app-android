@@ -401,6 +401,7 @@ public class PlayerFragment extends BaseFragment implements IPlayerListener, Ser
             handler.removeCallbacks(requestAccessibilityFocusCallback);
             freezePlayer();
             setTouchExploreChangeListener(null);
+//            removeSubtitleCallBack();
         }catch(Exception e){
             logger.error(e);
         }
@@ -563,6 +564,7 @@ public class PlayerFragment extends BaseFragment implements IPlayerListener, Ser
             controller.setNextPreviousListeners(nextListner, prevListner);
             player.setController(controller);
             reAttachPlayEventListener();
+//            initializeClosedCaptioning();
 
         } catch(Exception e) {
             logger.error(e);
@@ -1398,6 +1400,7 @@ public class PlayerFragment extends BaseFragment implements IPlayerListener, Ser
                 @Override
                 public void onItemClicked(HashMap<String, String> lang) {
                     closedCaptionsEnabled = true;
+                    loginPrefs.setClosedCaptionsVisibility(true);
                     final String languageSubtitle = lang.keySet().toArray()[0].toString();
                     setSubtitleLanguage(languageSubtitle);
                     if (player != null) {
@@ -1420,6 +1423,7 @@ public class PlayerFragment extends BaseFragment implements IPlayerListener, Ser
                 @Override
                 public void onCancelClicked() {
                     closedCaptionsEnabled = false;
+                    loginPrefs.setClosedCaptionsVisibility(false);
                     hideClosedCaptioning();
                     setSubtitleLanguage(getString(R.string.lbl_cc_none));
                     if (player != null) {
